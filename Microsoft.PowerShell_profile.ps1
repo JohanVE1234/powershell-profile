@@ -190,8 +190,12 @@ function head {
 }
 
 function tail {
-  param($Path, $n = 10)
-  Get-Content $Path -Tail $n
+  param($Path, $n = 10, [switch] $f)
+  if($f){
+    Get-Content $Path -Tail $n -Wait
+  } else {
+    Get-Content $Path -Tail $n
+  }
 }
 
 # Quick File Creation
